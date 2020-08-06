@@ -1,0 +1,51 @@
+@page "/developer"
+@inherits FetchDataBase
+
+
+<h3>Developers</h3>
+<small>Add as many developers as you wish.</small>
+<div class="form-group">
+    <a class="btn btn-success" href="developer/create"><i class="oi oi-plus"></i> Create New</a>
+</div>
+<br>
+
+@if (developers == null)
+{
+    <text>Loading...</text>
+}
+else if (developers.Length == 0)
+{
+    <text>No Records Found.</text>
+}
+else
+{
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Email</th>
+                <th>Experience (Years)</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (Developer dev in developers)
+            {
+                <tr>
+                    <td>@dev.Id</td>
+                    <td>@dev.FirstName</td>
+                    <td>@dev.LastName</td>
+                    <td>@dev.Email</td>
+                    <td>@dev.Experience</td>
+                    <td>
+                        <a class="btn btn-success" href="developer/edit/@dev.Id">Edit</a>
+                        <button class="btn btn-danger" @onclick="@(() => DeleteAsync(dev.Id))">Delete</button>
+                    </td>
+                </tr>
+            }
+
+        </tbody>
+    </table>
+}

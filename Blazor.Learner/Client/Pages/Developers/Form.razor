@@ -1,0 +1,53 @@
+@inherits FormBase
+
+<EditForm Model="@Developer" OnValidSubmit="OnValidSubmit">
+  <DataAnnotationsValidator />
+  <ValidationSummary />
+  <div class="form-group">
+  <label for="firstName">First Name:</label>
+    <div>
+      <InputText id="firstName" @bind-Value="@Developer.FirstName" />
+      <ValidationMessage For="@(() => Developer.FirstName)" />
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="lastName">Last Name:</label>
+    <div>
+      <InputText id="lastName" @bind-Value="@Developer.LastName" />
+      <ValidationMessage For="@(() => Developer.LastName)" />
+    </div>
+  </div>
+  
+
+  <div class="form-group">
+    <label for="email">Email:</label>
+    <div>
+      <InputText id="email" @bind-Value="@Developer.Email" />
+      <ValidationMessage For="@(() => Developer.Email)" />
+    </div>
+  </div>
+  
+  <div class="form-group">
+    <label for="experienceId">Experience:</label>
+    <div>
+      <InputNumber id="experienceId" @bind-Value="@Developer.Experience" />
+      <ValidationMessage For="@(() => Developer.Experience)" />
+    </div>
+  </div>
+  
+
+
+  <button class="btn btn-success" type="submit">@ButtonText</button>
+</EditForm>
+
+
+  
+
+
+
+  
+
+
+
+

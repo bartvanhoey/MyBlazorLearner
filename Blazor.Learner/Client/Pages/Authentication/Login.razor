@@ -1,0 +1,41 @@
+@inherits LoginBase
+@page "/login"
+@layout AuthLayout
+
+<h1 class="h2 font-weight-normal login-title">
+  Login
+</h1>
+
+<EditForm Model="@LoginRequest" OnValidSubmit="HandleValidSubmitAsync">
+  <DataAnnotationsValidator />
+  <ValidationSummary />
+  <div class="form-group">
+    <label for="userName">User Name:</label>
+    <div>
+      <InputText id="userName" class="form-control" @bind-Value="@LoginRequest.UserName" />
+      <ValidationMessage For="@(() => LoginRequest.UserName)" />
+    </div>
+  </div>
+
+<div class="form-group">
+  <label for="password">Password:</label>
+  <div>
+    <InputText id="password" class="form-control" @bind-Value="@LoginRequest.Password" />
+    <ValidationMessage For="@(() => LoginRequest.Password)" />
+  </div>
+</div>
+
+<div class="form-check">
+  <InputCheckbox id="rememberMe" class="form-check-input" @bind-Value="@LoginRequest.RememberMe" />
+  <label class="form-check-label" for="rememberMe">Remember Me:</label>
+  <ValidationMessage For="@(() => LoginRequest.RememberMe)" />
+</div>
+
+<button class="btn btn-lg btn-primary btn-block" type="submit">Sign In</button>
+
+<label class="text-danger">@error</label>
+
+<NavLink href="register"><h6 class="font-weight-normal text-center">Create Account</h6></NavLink>
+
+</EditForm>
+

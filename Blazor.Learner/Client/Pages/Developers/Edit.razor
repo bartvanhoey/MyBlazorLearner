@@ -1,0 +1,6 @@
+@page "/developer/edit/{developerId:int}"
+@inherits EditBase
+
+<h3>Edit</h3>
+
+<Form ButtonText="Update" Developer="@Developer" OnValidSubmit="@EditDeveloperAsync"></Form>
